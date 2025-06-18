@@ -1,7 +1,43 @@
+import { useRef } from "react";
+import { usePersistentForm } from "../hooks/usePersistentForm";
+
 export default function StepOne() {
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const middleNameRef = useRef(null);
+  const birthDateRef = useRef(null);
+  const ageRef = useRef(null);
+  const genderRef = useRef(null);
+  const civilStatusRef = useRef(null);
+  const nationalityRef = useRef(null);
+  const religionRef = useRef(null);
+  const contactNumberRef = useRef(null);
+  const emailAddressRef = useRef(null);
+  const addressRef = useRef(null);
+  const placeOfBirthRef = useRef(null);
+  const lrnNumberRef = useRef(null);
+
+  const persistentFields = {
+    firstNameRef,
+    lastNameRef,
+    middleNameRef,
+    birthDateRef,
+    ageRef,
+    genderRef,
+    civilStatusRef,
+    nationalityRef,
+    religionRef,
+    contactNumberRef,
+    emailAddressRef,
+    addressRef,
+    placeOfBirthRef,
+    lrnNumberRef,
+  };
+
+  usePersistentForm({ refs: persistentFields });
   return (
     <div className="flex items-center justify-center h-full bg-white p-4">
-      <form class="w-full max-w-[1000px] shadow-2xl bg-white shadow-xl/30 border border-gray-300 p-6 rounded-2xl"> 
+      <form class="w-full max-w-[1000px] shadow-2xl bg-white shadow-xl/30 border border-gray-300 p-6 rounded-2xl">
         <div class="flex flex-wrap -mx-3 mb-2">
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label
@@ -11,6 +47,7 @@ export default function StepOne() {
               First Name
             </label>
             <input
+              ref={firstNameRef}
               className="appearance-none block w-full  rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -24,6 +61,7 @@ export default function StepOne() {
               Middle Name (optional)
             </label>
             <input
+              ref={middleNameRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -37,6 +75,7 @@ export default function StepOne() {
               Last Name
             </label>
             <input
+              ref={lastNameRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -52,6 +91,7 @@ export default function StepOne() {
               Date of Birth
             </label>
             <input
+              ref={birthDateRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="date"
             />
@@ -65,6 +105,7 @@ export default function StepOne() {
               Age
             </label>
             <input
+              ref={ageRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -79,11 +120,12 @@ export default function StepOne() {
             </label>
             <div className="relative">
               <select
+                ref={genderRef}
                 className="block appearance-none w-full rounded-sm border border-gray-400 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
               >
-                <option>Male</option>
-                <option>Female</option>
+                <option value={1}>Male</option>
+                <option value={2}>Female</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -107,6 +149,7 @@ export default function StepOne() {
               Civil Status
             </label>
             <input
+              ref={civilStatusRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -120,6 +163,7 @@ export default function StepOne() {
               Nationality
             </label>
             <input
+              ref={nationalityRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -133,6 +177,7 @@ export default function StepOne() {
               Religion
             </label>
             <input
+              ref={religionRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -148,6 +193,7 @@ export default function StepOne() {
               Contact Number
             </label>
             <input
+              ref={contactNumberRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -161,6 +207,7 @@ export default function StepOne() {
               Email Address
             </label>
             <input
+              ref={emailAddressRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="email"
             />
@@ -171,17 +218,17 @@ export default function StepOne() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               for="grid-last-name"
             >
-              Adress
+              Address
             </label>
             <input
+              ref={addressRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
           </div>
         </div>
 
-
-                <div class="flex flex-wrap -mx-3 mb-2">
+        <div class="flex flex-wrap -mx-3 mb-2">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -190,6 +237,7 @@ export default function StepOne() {
               Place of Birth
             </label>
             <input
+              ref={placeOfBirthRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
@@ -203,18 +251,14 @@ export default function StepOne() {
               LRN Number
             </label>
             <input
+              ref={lrnNumberRef}
               className="appearance-none block w-full rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
             />
           </div>
-
-
         </div>
 
-  
-  <button className=""></button>
-
- 
+        <button className=""></button>
       </form>
     </div>
   );
