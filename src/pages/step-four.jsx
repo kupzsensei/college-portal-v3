@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { usePersistentForm } from "../hooks/usePersistentForm";
 import { useNavigate } from "react-router-dom";
+import { enrollStudentAPI } from "../api";
 
 export default function StepFour() {
   const navigate = useNavigate(); // added
@@ -24,7 +25,7 @@ export default function StepFour() {
     e.preventDefault();
     const postData = {
       // step-one
-      student: {
+      student_information: {
         first_name: localStorage.getItem("firstNameRef"),
         last_name: localStorage.getItem("lastNameRef"),
         middle_name: localStorage.getItem("middleNameRef"),
@@ -35,7 +36,7 @@ export default function StepFour() {
         contact_number: localStorage.getItem("contactNumberRef"),
         email: localStorage.getItem("emailAddressRef"),
         address: localStorage.getItem("addressRef"),
-        bith_place: localStorage.getItem("placeOfBirthRef"),
+        birth_place: localStorage.getItem("placeOfBirthRef"),
         lrn_number: localStorage.getItem("lrnNumberRef"),
       },
 
@@ -57,13 +58,12 @@ export default function StepFour() {
       },
 
       // step-four
-      enrollment: {
-        academic_year: localStorage.getItem("academicYearRef"),
-        type: localStorage.getItem("applicationTypeRef"),
-        status: localStorage.getItem("enrollmentStatusRef"),
-        mode_of_learning: localStorage.getItem("modeOfLearningRef"),
-        course: 2,
-      },
+
+      academic_year: localStorage.getItem("academicYearRef"),
+      type: 1,
+      status: 1,
+      mode_of_learning: 1,
+      course: 2,
     };
     // alert("You are enrolled!");
     // academicYearRef.current.value = "";
@@ -71,6 +71,12 @@ export default function StepFour() {
     // navigate("/create-student"); // redirect to /create-student
     // localStorage.clear(); // clear local storage
     console.log("postData", postData);
+    enrollStudentAPI(postData).then((res) => {
+      console.log(res);
+      if (res.course) {
+        alert("success");
+      }
+    });
   };
 
   return (
@@ -86,7 +92,7 @@ export default function StepFour() {
           <input
             ref={academicYearRef}
             className="appearance-none block w-full  rounded-sm border border-gray-400 text-gray-700 borderrounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            type="date"
+            type="text"
           />
         </div>
 

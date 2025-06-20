@@ -25,3 +25,17 @@ export const getGenders = async () => {
   console.log(res);
   return res;
 };
+
+export const enrollStudentAPI = async (data) => {
+  const response = await fetch(`${BASE_URL}/api/onetapEnroll/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const res = await response.json();
+  console.log("enroll response", res);
+  return res;
+};
